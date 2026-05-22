@@ -3,10 +3,10 @@ let sql;
 
 const buatKoneksi = async () => {
     return await mysql.createConnection({
-        host: 'localhost',
-        user: 'nama_db',
-        password: 'password_db',
-        database: 'nama_db'
+        host: '194.233.65.45',
+        user: 'utpaxr6t_backup',
+        password: 'Mff_180705',
+        database: 'utpaxr6t_backup'
     })
 }
 
