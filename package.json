@@ -1,0 +1,25 @@
+{
+  "name": "api_express",
+  "version": "1.0.0",
+  "description": "Project API Berbasis NodeJS + API",
+  "keywords": [
+    "API",
+    "Express",
+    "NodeJS",
+    "Back",
+    "End"
+  ],
+  "license": "ISC",
+  "author": "Fanani Fatihul",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "mysql2": "^3.22.3"
+  }
+}
