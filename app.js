@@ -4,6 +4,9 @@ const cors = require("cors");
 const db = require("./db.js");
 const port = process.env.PORT || 3000;
 
+app.set("view engine", "ejs");
+app.set("views", "view");
+app.use(express.static(__dirname + '/public'));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -74,6 +77,12 @@ app.post("/backup", async (req, res) => {
         });
     }
 });
+
+// TAMBAHAN UNTUK MENAMPILKAN DATA DI BERANDA
+app.get("/", async (req, res) => {
+    const dtx = await db.getMetode();
+    res.render("beranda", { data: dtx }); 
+})
 
 app.get("/status", (req, res) => {
     res.json({
