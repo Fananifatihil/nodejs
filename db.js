@@ -40,4 +40,11 @@ const tambahTransaksi = async (IDx, id, waktux, nominalx, jenisx, deskripsix) =>
     }
 }
 
-module.exports = {buatKoneksi, getMetode, tambahBackup, tambahTransaksi}
+const bacaBackup = async () => {
+    const db = await buatKoneksi();
+    sql = `SELECT * FROM backup ORDER BY waktu DESC`;
+    const [rows] = await db.execute(sql);
+    return rows.length > 0 ? rows : false;
+}
+
+module.exports = {buatKoneksi, getMetode, tambahBackup, tambahTransaksi, bacaBackup}

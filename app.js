@@ -78,6 +78,22 @@ app.post("/backup", async (req, res) => {
     }
 });
 
+app.get("/daftar_backup", async (req, res) => {
+    const dtx = await db.bacaBackup();
+    if(dtbackup == false){
+        res.send('{"kode": "00", "pesan":"Data Backup Tidak Ditemukan"}');
+    }
+});
+
+app.get("/daftar_backup", async (req, res) => {
+    const dtbackup = await db.bacaBackup();
+    if (dtbackup == false) {
+        res.send('{"kode": "00", "pesan":"Data Backup Tidak Ditemukan"}');
+    } else {
+        res.send('{"kode": "01", "pesan":"Data Backup Ditemukan", "data": ' + JSON.stringify(dtbackup) + '}');
+    }
+});
+
 // TAMBAHAN UNTUK MENAMPILKAN DATA DI BERANDA
 app.get("/", async (req, res) => {
     const dtx = await db.getMetode();
