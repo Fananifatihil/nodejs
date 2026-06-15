@@ -10,13 +10,8 @@ const buatKoneksi = async () => {
     })
 }
 
-const getMetode = async () => {
-    const db = await buatKoneksi();
-    sql = `SELECT * FROM backup`;
-    const [rows] = await db.execute(sql);
-    return rows.length > 0 ? rows : false;
-}
 
+//backup transaksi 
 
 const tambahBackup = async (id, Nama, channel) => {
     const db = await buatKoneksi();
@@ -31,7 +26,7 @@ const tambahBackup = async (id, Nama, channel) => {
 
 const tambahTransaksi = async (IDx, id, waktux, nominalx, jenisx, deskripsix) => {
     const db = await buatKoneksi();
-    sql = `INSERT INTO transaksi VALUES ('${IDx}', '${id}', '${waktux}', '${nominalx}', '${jenisx}', '${deskripsix}')`;
+    sql = `INSERT INTO backup_transaksi VALUES ('${IDx}', '${id}', '${waktux}', '${nominalx}', '${jenisx}', '${deskripsix}')`;
     try {
         await db.execute(sql);
         return "1";
@@ -50,6 +45,13 @@ const bacaBackup = async () => {
 const bacaDetailBackup = async (id_backup) => {
     const db = await buatKoneksi();
     sql = `SELECT * FROM backup_transaksi WHERE id_backup = '${id_backup}' ORDER BY tgl_jam`;
+    const [rows] = await db.execute(sql);
+    return rows.length > 0 ? rows : false;
+}
+
+const getMetode = async () => {
+    const db = await buatKoneksi();
+    sql = `SELECT * FROM backup`;
     const [rows] = await db.execute(sql);
     return rows.length > 0 ? rows : false;
 }
